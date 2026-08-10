@@ -36,6 +36,9 @@ header .title a {
   max-width: 1100px;
   margin: 16px auto;
 }
+section {
+  margin: 3rem auto;
+}
 
 /* 入力欄 */
 input {
