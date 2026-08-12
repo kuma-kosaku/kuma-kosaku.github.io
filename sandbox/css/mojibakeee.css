@@ -1,0 +1,36 @@
+.panel {
+  margin: 20px 2%;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #444;
+  background-color: #fff;
+}
+
+button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #666;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+#output {
+  width: 100%;
+  min-height: 120px;
+  padding: 8px;
+  border: 1px solid #444;
+  background-color: #eee;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
