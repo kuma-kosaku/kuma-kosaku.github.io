@@ -5,8 +5,11 @@
     if (!target) return;
 
     // 現在のページの階層に応じて相対パスを決める
-    const isToolPage = window.location.pathname.includes("/tool/");
-    const headerPath = isToolPage
+    const isSubPage =
+      window.location.pathname.includes("/tool/") ||
+      window.location.pathname.includes("/sandbox/") ||
+      window.location.pathname.includes("/work/");
+    const headerPath = isSubPage
       ? "../assets/header.html"
       : "./assets/header.html";
 
@@ -18,7 +21,7 @@
         // ホームリンク設定
         const homeLink = document.getElementById('home-link');
         if (homeLink) {
-          homeLink.href = isToolPage
+          homeLink.href = isSubPage
             ? "../index.html"
             : "./index.html";
         }
