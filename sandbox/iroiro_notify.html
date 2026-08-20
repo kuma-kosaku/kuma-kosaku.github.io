@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通知ウィンドウ色々</title>
+  <link rel="stylesheet" href="../assets/css/base_style.css">
+  <link rel="stylesheet" href="css/iroiro_notify.css">
+  <script src="js/iroiro_notify.js" defer></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="page-info">
+    <h2 class="title">通知ウィンドウ色々</h2>
+    <p class="description">
+      通知ウィンドウを色々つくって試してみる。
+    </p>
+  </div>
+  <div class="container">
+    <div>
+      <button onclick="notify_01('シンプルな通知ウィンドウ')">通知ウィンドウ_01</button>
+      <p>右下に通知ウィンドウを一時的に表示します。</p>
+      <div id="notify_01"></div>
+    </div>
+    <div>
+      <button onclick="notify_02('画面上部に表示するトースト風の通知ウィンドウ')">通知ウィンドウ_02</button>
+      <p>画面上部にトースト風の通知ウィンドウを表示します</p>
+      <div id="notify_02"></div>
+    </div>
+    <div>
+      <button onclick="notify_03('./img/kuma_icon.png', '画像付きで通知するトースト風の通知ウィンドウ')">通知ウィンドウ_03</button>
+      <p>画像付きで通知するトースト風の通知ウィンドウを表示します</p>
+      <div id="notify_03"></div>
+    </div>
+  </div>
+
+  <script src="../assets/js/header.js"></script>
+</body>
+
+</html>

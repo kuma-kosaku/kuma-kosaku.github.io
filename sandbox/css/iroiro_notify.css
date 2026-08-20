@@ -1,0 +1,51 @@
+/* 通知ウィンドウ_01(右下に表示) */
+#notify_01 {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #abc;
+  color: #111;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: none;
+}
+
+/* 通知ウィンドウ_02(トースト風) */
+#notify_02 {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%); /* 表示個所を50%左に寄せて中央揃えにする */
+  background: #eee;
+  color: #111;
+  border: 1px solid #aaa;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: none;
+  z-index: 9999;
+}
+
+/* 通知ウィンドウ_03(画像＋テキスト) */
+#notify_03 {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: none;
+  z-index: 9999;
+  display: flex; /* 横並び表示 */
+  align-items: center;
+  gap: 10px;
+}
+/* 画像のサイズ */
+#notify_03 img {
+  width: 128px;
+  height: 128px;
+}
