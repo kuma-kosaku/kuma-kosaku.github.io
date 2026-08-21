@@ -38,14 +38,54 @@
   padding: 12px 18px;
   border-radius: 6px;
   font-size: 14px;
-  display: none;
   z-index: 9999;
-  display: flex; /* 横並び表示 */
+  display: none;
   align-items: center;
   gap: 10px;
 }
 /* 画像のサイズ */
 #notify_03 img {
+  width: 128px;
+  height: 128px;
+}
+
+/* 通知ウィンドウ_無造作に生成 */
+.notify_spawn {
+  position: fixed;
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.notify_spawn img {
+  width: 128px;
+  height: 128px;
+}
+
+/* 通知ウィンドウ_下から表示 */
+.notify_crawl_up {
+  position: fixed;
+  bottom: 20px; /* 画面下から表示 */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* アニメーション */
+  transition: transform 1s ease, opacity 1s ease;
+}
+.notify_crawl_up img {
   width: 128px;
   height: 128px;
 }

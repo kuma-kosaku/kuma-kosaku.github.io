@@ -24,15 +24,37 @@
       <p>右下に通知ウィンドウを一時的に表示します。</p>
       <div id="notify_01"></div>
     </div>
+
     <div>
       <button onclick="notify_02('画面上部に表示するトースト風の通知ウィンドウ')">通知ウィンドウ_02</button>
       <p>画面上部にトースト風の通知ウィンドウを表示します</p>
       <div id="notify_02"></div>
     </div>
+
     <div>
-      <button onclick="notify_03('./img/kuma_icon.png', '画像付きで通知するトースト風の通知ウィンドウ')">通知ウィンドウ_03</button>
+      <button onclick="notify_03(
+        './img/kuma_icon.png', 
+        '画像付きで通知するトースト風の通知ウィンドウ'
+        )">通知ウィンドウ_03</button>
       <p>画像付きで通知するトースト風の通知ウィンドウを表示します</p>
       <div id="notify_03"></div>
+    </div>
+
+    <div>
+      <button onclick="notify_spawn(
+        './img/kuma_icon.png',
+        '通知ウィンドウを無造作に生成',
+        10
+        )">通知ウィンドウ_無造作に生成</button>
+      <p>連続で無造作に通知ウィンドウを表示します</p>
+    </div>
+
+    <div>
+      <button onclick="notify_crawl_up(
+        './img/kuma_icon.png',
+        '通知ウィンドウを下から表示'
+        )">通知ウィンドウ_下から出てくるタイプ</button>
+      <p>画面下部から通知ウィンドウをひょっこり表示します</p>
     </div>
   </div>
 
