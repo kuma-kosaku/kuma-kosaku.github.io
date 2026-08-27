@@ -1,47 +1,46 @@
 body {
-  margin: 0;
+  max-width: 1200px;
+  margin: 16px auto;
   padding: 0;
   font-family: "MS PGothic", "Yu Gothic", sans-serif;
   font-size: 14px;
   background-color: #f5f5f5;
   color: #000;
+  transition: background 3s ease, color 3s ease;
 }
 
+/* ヘッダー */
 #header {
   background-color: #003366;
   color: #ffffff;
   padding: 8px 12px;
   border-bottom: 2px solid #001a33;
 }
-
 #header h1 {
   margin: 0;
   font-size: 20px;
 }
 
+
+/* スレッド情報 */
 .thread-info {
   margin-top: 4px;
   font-size: 14px;
 }
-
 .nav {
   margin-top: 6px;
   font-size: 14px;
 }
-
 .nav a {
   color: #cce6ff;
   text-decoration: none;
 }
-
 .nav a:hover {
   text-decoration: underline;
 }
-
-#main {
+#body {
   padding: 10px 12px;
 }
-
 .notice {
   margin-bottom: 10px;
   padding: 8px;
@@ -51,91 +50,138 @@ body {
   color: #660000;
 }
 
+/* レスの表示設定 */
 .res {
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin: 12px 0;
   padding: 6px 8px;
   border-bottom: 1px solid #cccccc;
   background-color: #ffffff;
 }
-
 .res .meta {
-  font-size: 14px;
   color: #555555;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
-
 .res .number {
   font-weight: bold;
   margin-right: 4px;
 }
-
 .res .name {
   color: #003399;
 }
-
 .res .date {
   margin-left: 8px;
 }
-
 .res .id {
   margin-left: 8px;
   color: #006600;
 }
-
-.res .body {
+.res .main {
+  font-size: 14px;
   line-height: 1.6;
 }
 
-/* 不穏なレス用の軽い演出 */
-.res.glitch {
-  background-color: #fdfdfd;
-  border-left: 3px solid #990000;
-  position: relative;
+
+/* 通知ウィンドウ(トースト風) */
+#notify {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: none;
+  z-index: 9999;
 }
 
-.res.glitch .body {
-  color: #222222;
+/* 通知ウィンドウ(画像＋テキスト) */
+#notify_img {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+#notify_img img {
+  width: 128px;
+  height: 128px;
 }
 
-/* ここからホラー演出用の“違和感”候補（必要に応じて使う） */
-
-/* ほんの少しだけ文字をぶらす */
-.res.glitch .body {
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+/* 通知ウィンドウ_無造作に生成 */
+.notify_spawn {
+  position: fixed;
+  background: #333;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.notify_spawn img {
+  width: 128px;
+  height: 128px;
 }
 
-/* ページ全体がわずかに暗くなったように見せるクラス（後でJSで付け替え想定） */
-body.dimmed {
-  background-color: #e0e0e0;
+/* 画像を下から表示 */
+.crawl_up {
+  position: fixed;
+  bottom: -1100px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 7s ease;
+  z-index: 9999;
+}
+.crawl_up.show {
+  bottom: 0px;
+  animation: crawlShake 0.35s ease-in-out 20;
+}
+@keyframes crawlShake {
+  0%   { transform: translateX(-50%) translateY(0); }
+  10%  { transform: translateX(-49.8%) translateY(0); }
+  20%  { transform: translateX(-50.2%) translateY(0); }
+  30%  { transform: translateX(-49.7%) translateY(0); }
+  40%  { transform: translateX(-50.3%) translateY(0); }
+  50%  { transform: translateX(-49.8%) translateY(0); }
+  60%  { transform: translateX(-50.2%) translateY(0); }
+  70%  { transform: translateX(-50%) translateY(0); }
+  80%  { transform: translateX(-49.8%) translateY(0); }
+  90%  { transform: translateX(-50.2%) translateY(0); }
+  100% { transform: translateX(-50%) translateY(0); }
 }
 
-/* リンクの色がいつの間にか変わる演出用 */
-body.dimmed .nav a,
-body.dimmed .footer-nav a {
-  color: #ff6666;
+/**************************/
+/* 画面に付与するエフェクト */
+/**************************/
+.scroll_lock {
+  overflow: hidden;
 }
-
-/* フッター */
-.footer-nav {
-  margin-top: 20px;
-  font-size: 12px;
+/* 霧がかかったようなエフェクト */
+.foggy {
+  text-shadow:
+    5px 0px 5px rgba(255,0,0,1),
+    -5px 0px 5px rgba(0,255,255,0.8);
+  letter-spacing: 0.5px;
 }
-
-.footer-nav a {
-  color: #003399;
-  text-decoration: none;
+/* 暗転エフェクト */
+.turn_dark {
+  background: #222;
 }
-
-.footer-nav a:hover {
-  text-decoration: underline;
-}
-
-#footer {
-  margin-top: 20px;
-  padding: 8px 12px;
-  border-top: 1px solid #cccccc;
-  font-size: 12px;
-  color: #666666;
-  background-color: #fafafa;
-  text-align: center;
+.turn_dark .res {
+  background: #333;
+  color: #600;
 }
