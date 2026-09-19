@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ローン返済シミュレーター</title>
+  <link rel="stylesheet" href="../assets/css/base_style.css">
+  <link rel="stylesheet" href="css/loan_simulator.css">
+</head>
+
+<body>
+
+  <div id="header"></div>
+  <div class="page-info">
+    <h2 class="title">ローン返済シミュレーター（固定金利・元利均等返済方式）</h1>
+      <p class="description">
+        ローン返済に関わる金額を計算するシミュレータです。<br>
+        固定金利・元利均等返済方式でのローン向けに作成しています。<br>
+      </p>
+  </div>
+
+  <main class="container">
+    <div>
+      <label>借入金額：
+        <input type="number" id="loanAmount" value="50000000">
+      </label><br><br>
+
+      <label>金利（年利%）：
+        <input type="number" id="interestRate" value="2.0" step="0.01">
+      </label><br><br>
+
+      <label>優遇金利（年利%）：
+        <input type="number" id="discountRate" value="1.2" step="0.01">
+      </label><br><br>
+
+      <label>返済期間（年）：
+        <input type="number" id="loanYears" value="35">
+      </label><br><br>
+      
+      <label>優遇期間（年）：
+        <input type="number" id="discountYears" value="5">
+      </label><br><br>
+
+      <h3>繰上げ返済</h3>
+      <table id="prepayTable">
+        <thead>
+          <tr>
+            <th>年月</th>
+            <th>金額</th>
+            <th>方式</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button id=addPrepayRow>行を追加</button><br><br>
+
+      <button id="simulate">計算する</button>
+    </div>
+
+    <div id="result" class="accordion"></div>
+  </main>
+
+  <script src="../assets/js/header.js"></script>
+  <script src="js/loan_simulator.js"></script>
+</body>
+
+</html>
