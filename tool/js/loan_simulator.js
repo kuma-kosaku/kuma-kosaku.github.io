@@ -43,11 +43,12 @@
   function simulate() {
     const loanAmount = Number(document.getElementById("loanAmount").value);
     const interestRate = Number(document.getElementById("interestRate").value) / 100;
-    const discountRate = Number(document.getElementById("discountRate").value) / 100;
+    const loanYears = Number(document.getElementById("loanYears").value);
     const startMonth = document.getElementById("startMonth").value;
     const [startY, startM] = startMonth.split("-").map(Number);
+    const discountRate = Number(document.getElementById("discountRate").value) / 100;
     const discountYears = Number(document.getElementById("discountYears").value);
-    const loanYears = Number(document.getElementById("loanYears").value);
+
     const totalMonths = loanYears * 12;
     const discountMonths = discountYears * 12;
 
@@ -83,7 +84,12 @@
       if (i < discountMonths) {
         monthlyRate = discountRate / 12;
       } else {
+        // 優遇期間終了していれば、返済額を再計算
         monthlyRate = interestRate / 12;
+        if (i === discountMonths) {
+          const remainMonths = totalMonths - i;
+          monthlyPayment = calcMonthlyPayment(balance, interestRate, remainMonths);
+        }
       }
       // 利息
       const interest = Math.floor(balance * monthlyRate);
@@ -98,12 +104,16 @@
         if (balance < 0) balance = 0;
 
         if (pp.type === "shorten") {
-          // 期間短縮 → 残高に応じて返済額はそのまま
+          // 期間短縮：返済額はそのまま
           monthlyPayment = monthlyPayment;
         } else {
-          // 返済額軽減 → 残り期間で再計算
+          // 返済額軽減：残り期間で再計算する
           const remainMonths = totalMonths - i;
-          monthlyPayment = calcMonthlyPayment(balance, (i < discountMonths ? discountRate : interestRate), remainMonths);
+          monthlyPayment = calcMonthlyPayment(
+            balance,
+            (i < discountMonths ? discountRate : interestRate),
+            remainMonths
+          );
         }
       }
 
@@ -166,10 +176,10 @@
   function saveSettings() {
     const loanAmount = Number(document.getElementById("loanAmount").value);
     const interestRate = Number(document.getElementById("interestRate").value);
-    const discountRate = Number(document.getElementById("discountRate").value);
-    const startMonth = document.getElementById("startMonth").value;
-    const discountYears = Number(document.getElementById("discountYears").value);
     const loanYears = Number(document.getElementById("loanYears").value);
+    const startMonth = document.getElementById("startMonth").value;
+    const discountRate = Number(document.getElementById("discountRate").value);
+    const discountYears = Number(document.getElementById("discountYears").value);
     // 繰上げ返済の入力部分
     const prepayList = [];
     document.querySelectorAll("#prepayTable tbody tr").forEach(row => {
