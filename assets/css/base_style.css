@@ -52,6 +52,20 @@ button {
   border-radius: 8px;
   background-color: #abc;
 }
+.input-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.input-form label {
+  width: 200px;
+  text-align: right;
+  margin-bottom: auto;
+}
+.input-form .input {
+  flex: 1;
+  text-align: left;
+}
 
 /* メニュー（アコーディオン） */
 .menu .item {

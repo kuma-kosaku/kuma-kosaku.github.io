@@ -9,7 +9,7 @@
   }
 
   // --------------------------------------------------
-  // 繰り上げ返済業の動作
+  // 繰り上げ返済行の動作
   // --------------------------------------------------
   function addPrepayRow() {
     const tbody = document.querySelector("#prepayTable tbody");
@@ -34,14 +34,14 @@
   // --------------------------------------------------
   function calcMonthlyPayment(principal, annualRate, months) {
     const r = annualRate / 12;
-    return Math.ceil(principal * r / (1 - Math.pow(1 + r, -months)));
+    return Math.floor(principal * r / (1 - Math.pow(1 + r, -months)));
   }
 
   // --------------------------------------------------
   // ローン返済シミュの実行
   // --------------------------------------------------
   function simulate() {
-    const loanAmount = Number(document.getElementById("loanAmount").value);
+    const loanAmount = Number(document.getElementById("loanAmount").value) * 10000;
     const interestRate = Number(document.getElementById("interestRate").value) / 100;
     const loanYears = Number(document.getElementById("loanYears").value);
     const startMonth = document.getElementById("startMonth").value;
@@ -146,9 +146,11 @@
       // 1年分表示
       const body = document.createElement("div");
       body.className = "acc-body";
-      let html = `<table><thead>
-      <tr><th>年月</th><th>返済総額</th><th>（元金分）</th><th>（利息分）</th><th>残高</th></tr>
-    </thead><tbody>`;
+      let html = `
+      <table><thead>
+        <tr><th>年月</th><th>返済総額</th><th>（元金分）</th><th>（利息分）</th><th>残高</th></tr>
+      </thead><tbody>
+      `;
 
       result[year].forEach(r => {
         html += `

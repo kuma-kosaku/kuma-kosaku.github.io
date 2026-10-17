@@ -21,42 +21,46 @@
   </div>
 
   <main class="container">
-    <div>
-      <label>借入金額：
-        <input type="number" id="loanAmount" value="50000000">
-      </label><br>
-      <label>金利（年利%）：
-        <input type="number" id="interestRate" value="2.0" step="0.01">
-      </label><br>
-      <label>返済期間（年）：
-        <input type="number" id="loanYears" value="35">
-      </label><br>
-      <label>返済開始（年 / 月）：
-        <input type="month" id="startMonth" value="35">
-      </label><br>
-      <label>優遇金利（年利%）：
-        <input type="number" id="discountRate" value="1.2" step="0.01">
-      </label><br>
-      <label>優遇期間（年）：
-        <input type="number" id="discountYears" value="5">
-      </label><br>
-
-      <h3>繰上げ返済</h3>
-      <table id="prepayTable">
-        <thead>
-          <tr>
-            <th>年月</th>
-            <th>金額</th>
-            <th>方式</th>
-            <th>削除</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <button id=addPrepayRow>行を追加</button><br><br>
-
-      <button id="simulate">計算する</button>
+    <div class="input-form">
+      <label>借入金額：</label>
+      <input type="number" id="loanAmount" value="5000">（万円）
     </div>
+    <div class="input-form">
+      <label>金利：</label>
+      <input type="number" id="interestRate" value="2.0" step="0.01">（年利％）
+    </div>
+    <div class="input-form">
+      <label>返済期間：</label>
+      <input type="number" id="loanYears" value="35">（年）
+    </div>
+    <div class="input-form">
+      <label>返済開始：</label>
+      <input type="month" id="startMonth" value="35">（年 / 月）
+    </div>
+    <div class="input-form">
+      <label>優遇金利：</label>
+      <input type="number" id="discountRate" value="1.2" step="0.01">（年利％）
+    </div>
+    <div class="input-form">
+      <label>優遇期間：</label>
+      <input type="number" id="discountYears" value="5">（年）
+    </div>
+
+    <h3>繰上げ返済</h3>
+    <table id="prepayTable">
+      <thead>
+        <tr>
+          <th>年月</th>
+          <th>金額</th>
+          <th>方式</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id=addPrepayRow>行を追加</button><br><br>
+
+    <button id="simulate">計算する</button>
 
     <div id="result" class="accordion"></div>
   </main>
