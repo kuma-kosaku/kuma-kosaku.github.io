@@ -35,7 +35,7 @@
     </div>
     <div class="input-form">
       <label>返済開始：</label>
-      <input type="month" id="startMonth" value="35">（年 / 月）
+      <input type="month" id="startMonth">（年 / 月）
     </div>
     <div class="input-form">
       <label>優遇金利：</label>
@@ -46,19 +46,25 @@
       <input type="number" id="discountYears" value="5">（年）
     </div>
 
-    <h3>繰上げ返済</h3>
-    <table id="prepayTable">
-      <thead>
-        <tr>
-          <th>年月</th>
-          <th>金額</th>
-          <th>方式</th>
-          <th>削除</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <button id=addPrepayRow>行を追加</button><br><br>
+    <div class="pp-area">
+      <h3>繰上げ返済</h3>
+      <small>
+        ※繰上げ返済は月々の返済の後に実行される計算になっています。<br>
+        　繰上げ（返済額軽減）による金額再計算は翌月の返済額に反映されます。
+      </small>
+      <table id="prepayTable">
+        <thead>
+          <tr>
+            <th>年月</th>
+            <th>金額</th>
+            <th>方式</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button id=addPrepayRow>行を追加</button><br><br>
+    </div>
 
     <button id="simulate">計算する</button>
 

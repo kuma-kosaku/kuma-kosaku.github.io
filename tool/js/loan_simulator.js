@@ -64,7 +64,7 @@
     const prepayList = [];
     document.querySelectorAll("#prepayTable tbody tr").forEach(row => {
       const m = row.querySelector(".pp-month").value;
-      const amt = Number(row.querySelector(".pp-amount").value);
+      const amt = Number(row.querySelector(".pp-amount").value) * 10000;
       const type = row.querySelector(".pp-type").value;
       if (m) {
         const [y, mm] = m.split("-").map(Number);
@@ -80,7 +80,7 @@
       const year = startY + Math.floor((startM - 1 + i) / 12);
       const month = ((startM - 1 + i) % 12) + 1;
 
-      // 金利切替
+      // 金利の判定
       if (i < discountMonths) {
         monthlyRate = discountRate / 12;
       } else {
@@ -97,6 +97,13 @@
       let principal = monthlyPayment - interest;
       if (principal < 0) principal = 0;
 
+      // 今月の返済額確定
+      const paymentThisMonth = monthlyPayment;
+
+      // 月々の返済の計算
+      balance -= principal;
+      if (balance < 0) balance = 0;
+
       // 繰上げ返済チェック
       const pp = prepayList.find(p => p.year === year && p.month === month);
       if (pp) {
@@ -104,11 +111,10 @@
         if (balance < 0) balance = 0;
 
         if (pp.type === "shorten") {
-          // 期間短縮：返済額はそのまま
-          monthlyPayment = monthlyPayment;
+          // 期間短縮：返済額はそのままなので計算なし
         } else {
           // 返済額軽減：残り期間で再計算する
-          const remainMonths = totalMonths - i;
+          const remainMonths = totalMonths - (i + 1); // 金額反映は翌月からなので+1
           monthlyPayment = calcMonthlyPayment(
             balance,
             (i < discountMonths ? discountRate : interestRate),
@@ -117,14 +123,11 @@
         }
       }
 
-      balance -= principal;
-      if (balance < 0) balance = 0;
-
       // 年ごとにまとめる
       if (!result[year]) result[year] = [];
       result[year].push({
         ym: `${year}-${String(month).padStart(2, "0")}`,
-        monthlyPayment,
+        monthlyPayment: paymentThisMonth,
         principal,
         interest,
         balance
@@ -148,7 +151,7 @@
       body.className = "acc-body";
       let html = `
       <table><thead>
-        <tr><th>年月</th><th>返済総額</th><th>（元金分）</th><th>（利息分）</th><th>残高</th></tr>
+        <tr><th>年月</th><th>返済額</th><th>（元金分）</th><th>（利息分）</th><th>残高</th></tr>
       </thead><tbody>
       `;
 
@@ -185,11 +188,11 @@
     // 繰上げ返済の入力部分
     const prepayList = [];
     document.querySelectorAll("#prepayTable tbody tr").forEach(row => {
-      const m = row.querySelector(".pp-month").value;
+      const ppm = row.querySelector(".pp-month").value;
       const amt = Number(row.querySelector(".pp-amount").value);
       const type = row.querySelector(".pp-type").value;
-      if (m) {
-        const [y, mm] = m.split("-").map(Number);
+      if (ppm) {
+        const [y, mm] = ppm.split("-").map(Number);
         prepayList.push({ year: y, month: mm, amount: amt, type });
       }
     });
@@ -231,7 +234,7 @@
       const tr = document.createElement("tr");
       tr.innerHTML = `
       <td><input type="month" class="pp-month" value="${pp.year}-${String(pp.month).padStart(2, "0")}"></td>
-      <td><input type="number" class="pp-amount" value="${pp.amount}"></td>
+      <td><input type="number" class="pp-amount" value="${pp.amount}">（万円）</td>
       <td>
         <select class="pp-type">
           <option value="shorten" ${pp.type === "shorten" ? "selected" : ""}>期間短縮</option>
