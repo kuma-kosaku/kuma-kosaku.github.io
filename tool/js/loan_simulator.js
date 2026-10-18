@@ -17,7 +17,7 @@
 
     row.innerHTML = `
     <td><input type="month" class="pp-month"></td>
-    <td><input type="number" class="pp-amount" value="100000"></td>
+    <td><input type="number" class="pp-amount">（万円）</td>
     <td>
       <select class="pp-type">
         <option value="shorten">期間短縮</option>
@@ -142,10 +142,13 @@
 
     Object.keys(result).forEach(year => {
       // アコーディオンのヘッダ
-      const header = document.createElement("div");
+      const header = document.createElement("summary");
       header.className = "acc-header";
       header.textContent = `${year}年（${result[year][0].ym} の支払から）`;
+      header.style.cursor = 'pointer';
+      header.style.fontWeight = 'bold';
       header.onclick = () => toggleAccordion(header);
+      
       // 1年分表示
       const body = document.createElement("div");
       body.className = "acc-body";

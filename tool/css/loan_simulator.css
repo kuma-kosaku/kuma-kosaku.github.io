@@ -25,28 +25,17 @@ th {
 
 #simulate {
   margin-left: 80px;
-  margin-bottom: 40px;
 }
 
 .accordion {
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-top: 20px;
 }
-.accordion table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 .acc-header {
-  background: #e0e0ff;
   padding: 10px;
   cursor: pointer;
-  border: 1px solid #aaa;
   margin-top: 5px;
 }
-
 .acc-body {
   display: none;
   padding: 10px;
-  border: 1px solid #aaa;
 }
