@@ -108,3 +108,49 @@ button {
   }
 }
 
+
+/* タブレット・スマホ対応 */
+@media (max-width: 768px) {
+
+  /* 本文 */
+  .container {
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  /* ヘッダー */
+  header {
+    padding: 4px 16px;
+  }
+
+  /* ページタイトル */
+  .page-info {
+    padding: 0 16px;
+  }
+
+  /* フォームを縦並びに */
+  .input-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-form label {
+    width: auto;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  .input-form .input {
+    width: 100%;
+  }
+
+  /* 入力欄 */
+  input,
+  button,
+  select,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 40px;
+  }
+}
