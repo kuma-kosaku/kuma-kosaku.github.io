@@ -1,13 +1,16 @@
-#simulate {
-  margin-left: 180px;
-}
+.container {
+  #simulate {
+    margin-left: 180px;
+  }
 
-th,
-td {
-  border: 1px solid #ccc;
-  padding: 6px 10px;
-  text-align: right;
-}
-th {
-  background: #e0e0ff;
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    text-align: right;
+  }
+
+  th {
+    background: #e0e0ff;
+  }
 }

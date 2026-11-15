@@ -13,7 +13,7 @@
     const months = years * 12;
     const monthlyRate = Math.pow(1 + annualRate, 1/12) - 1;
 
-    const maxInvest = 10800000;
+    const maxInvest = 18000000;
     let totalInvest = 0;
     let profit = 0;
     let value = 0;

@@ -1,34 +1,36 @@
-.input-form {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
+.container {
+  .input-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
 
-.input-form .label {
-  width: 160px;
-  text-align: right;
-  margin-bottom: auto;
-  margin-right: 16px;
-}
+  .input-form .label {
+    width: 160px;
+    text-align: right;
+    margin-bottom: auto;
+    margin-right: 16px;
+  }
 
-.input-form .value {
-  flex: 1;
-  text-align: left;
-}
+  .input-form .value {
+    flex: 1;
+    text-align: left;
+  }
 
-.button-area {
-  margin-left: 256px;
-}
+  .button-area {
+    margin-left: 256px;
+  }
 
-.result {
-  margin-top: 48px;
-  margin-left: 256px;
-}
+  .result {
+    margin-top: 48px;
+    margin-left: 256px;
+  }
 
-textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #444;
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #444;
+  }
 }
