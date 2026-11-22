@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分配金・配当金シミュレーター</title>
+  <link rel="stylesheet" href="../assets/css/base_style.css">
+  <link rel="stylesheet" href="css/income_simulator.css">
+</head>
+
+<body>
+  <div id="header"></div>
+  <div class="page-info">
+    <h2 class="title">分配金・配当金シミュレーター</h2>
+    <p class="description">
+      保有している銘柄の金額と想定年利、受取月から、1年間の分配金・配当金の目安を計算します。<br>
+      年間の見込み額を選択した受取月に均等に割り振って計算します。税金や実際の支払額は考慮していません。
+    </p>
+  </div>
+
+  <main class="container">
+    <div class="income-table-scroll">
+      <table id="incomeTable">
+        <thead>
+          <tr>
+            <th scope="col">銘柄</th>
+            <th scope="col">保有金額（円）</th>
+            <th scope="col">想定年利（%）</th>
+            <th scope="col" colspan="12">受取月</th>
+            <th scope="col">削除</th>
+          </tr>
+          <tr class="month-heading">
+            <th colspan="3"></th>
+            <th scope="col">1月</th>
+            <th scope="col">2月</th>
+            <th scope="col">3月</th>
+            <th scope="col">4月</th>
+            <th scope="col">5月</th>
+            <th scope="col">6月</th>
+            <th scope="col">7月</th>
+            <th scope="col">8月</th>
+            <th scope="col">9月</th>
+            <th scope="col">10月</th>
+            <th scope="col">11月</th>
+            <th scope="col">12月</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button id="addIncomeRow" type="button">行を追加</button>
+    <button id="simulate" type="button">決定</button>
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <section id="result" aria-live="polite">
+      <h3>年間の分配金・配当金（目安）</h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">月</th>
+            <th scope="col">受取見込み額</th>
+          </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">合計</th>
+            <td id="resultTotal">-</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+  </main>
+
+  <script src="../assets/js/header.js"></script>
+  <script src="js/income_simulator.js"></script>
+</body>
+
+</html>
